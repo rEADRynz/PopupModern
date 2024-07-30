@@ -2,8 +2,6 @@
 
 plugins {
     id 'com.android.library'
-    id 'maven-publish'
-    id 'com.vanniktech.maven.publish' version '0.18.0' // Pastikan menggunakan versi terbaru yang kompatibel
 }
 
 android {
