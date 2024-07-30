@@ -35,11 +35,19 @@ dependencies {
 publishing {
     publications {
         release(MavenPublication) {
-            from components.release
+            afterEvaluate {
+                from components.release
+            }
 
             groupId = 'com.nurazlib'
             artifactId = 'popupmodern'
             version = '1.0.0'
+        }
+    }
+
+    repositories {
+        maven {
+            url = uri("file://${buildDir}/maven-repo")
         }
     }
 }
