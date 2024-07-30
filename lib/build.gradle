@@ -4,6 +4,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
+    namespace 'com.nurazlib.popupmodern'
     compileSdkVersion 30
 
     defaultConfig {
