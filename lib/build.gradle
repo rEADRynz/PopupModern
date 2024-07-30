@@ -37,7 +37,7 @@ publishing {
     publications {
         release(MavenPublication) {
             afterEvaluate {
-                from components.release
+                from components.getByName("release")
             }
 
             groupId = 'com.nurazlib'
