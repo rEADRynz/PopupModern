@@ -26,5 +26,5 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - name: Publish to JitPack
-      run: ./gradlew publish
+    - name: Publish to Maven
+      run: ./gradlew publishToMavenLocal
