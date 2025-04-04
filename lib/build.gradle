@@ -3,7 +3,6 @@
 plugins {
     id 'com.android.library'
     id 'maven-publish'
-    id 'org.jetbrains.kotlin.android' version '1.8.22'  // Added Kotlin plugin for better ktx support
 }
 
 android {
@@ -17,7 +16,7 @@ android {
         versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"  // Added for library consumers
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -36,8 +35,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    
-    // Added Kotlin options if you're using Kotlin
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -48,37 +46,21 @@ publishing {
         release(MavenPublication) {
             groupId = 'io.github.readrynz'
             artifactId = 'popupmodern'
-            version = '1.1'  // Removed 'v' prefix for semantic versioning
+            version = '1.1'
             
             afterEvaluate {
                 from components.release
-                
-                // Add javadoc and sources artifacts
-                artifact sourcesJar
-                artifact javadocJar
             }
         }
     }
 }
 
-// Task to generate sources JAR
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    archiveClassifier.set('sources')
-}
-
-// Task to generate javadoc JAR
-task javadocJar(type: Jar, dependsOn: dokkaJavadoc) {
-    archiveClassifier.set('javadoc')
-    from dokkaJavadoc.outputDirectory
-}
-
 dependencies {
-    implementation 'androidx.core:core-ktx:1.10.1'  // Updated to latest stable version
-    implementation 'androidx.appcompat:appcompat:1.6.1'  // Updated
-    implementation 'com.google.android.material:material:1.9.0'  // Updated
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
     
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'  // Updated
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'  // Updated
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
